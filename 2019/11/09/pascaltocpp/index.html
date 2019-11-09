@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Nightkeeper" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="用来急救，不多废话。">
+<meta name="keywords" content="Pascal,C&#x2F;C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pascal 转 C++ 急救帖">
+<meta property="og:url" content="https://kexplorning.github.io/2019/11/09/pascaltocpp/index.html">
+<meta property="og:site_name" content="Nightkeeper">
+<meta property="og:description" content="用来急救，不多废话。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-09T14:54:58.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pascal 转 C++ 急救帖">
+<meta name="twitter:description" content="用来急救，不多废话。">
+
+<link rel="canonical" href="https://kexplorning.github.io/2019/11/09/pascaltocpp/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Pascal 转 C++ 急救帖 | Nightkeeper</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nightkeeper</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Not Only an Archive</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kexplorning.github.io/2019/11/09/pascaltocpp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="kexplorning">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nightkeeper">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pascal 转 C++ 急救帖
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-09 22:54:58" itemprop="dateCreated datePublished" datetime="2019-11-09T22:54:58+08:00">2019-11-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>用来急救，不多废话。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="c-快速安装与环境配置">C++ 快速安装与环境配置</h1>
+<blockquote>
+<p>注意：这里假设使用的系统是 Windows。</p>
+</blockquote>
+<h2 id="方式一使用-ide">方式一：使用 IDE</h2>
+<p>以下 IDE 选择一个即可：</p>
+<ul>
+<li><a href="https://sourceforge.net/projects/orwelldevcpp/" target="_blank" rel="noopener">Dev-C++</a></li>
+<li><a href="https://sourceforge.net/projects/codeblocks/" target="_blank" rel="noopener">Code::Blocks</a></li>
+<li><a href="https://visualstudio.microsoft.com/" target="_blank" rel="noopener">Visual Studio</a>（Community 版本一般就够用了）</li>
+</ul>
+<h2 id="方式二使用-代码编辑器-编译器-调试器">方式二：使用 代码编辑器 + 编译器 + 调试器</h2>
+<p>如果愿意折腾的话就去配吧，这里不说了，就注意一下配置环境变量。</p>
+<h1 id="c-语法快速提要">C++ 语法快速提要</h1>
+<p>首先第一点，C++ 程序都是从 <code>main</code> 这个部分开始运行的。</p>
+<p>大括号表示块语句的开始与结束： <code>{</code> 就相当于 Pascal 里面的 <code>begin</code> 右 <code>}</code> 就相当于 <code>end</code>。</p>
+<p>注意，和 Pascal 一样，C++ 每句话结束要加分号 <code>;</code>，不过大括号结尾不需要有分号，而且程序结束末尾不用打句号 <code>.</code>。</p>
+<p><code>//</code> 表示行内注释，<code>/* */</code> 表示块注释。</p>
+<p>按照惯例，看看 Hello World 吧。</p>
+<h2 id="hello-world第一个-c-程序">Hello World：第一个 C++ 程序</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt; // 导入 iostream 库</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World!"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后编译运行一下，看看结果。</p>
+<h3 id="简要解释">简要解释</h3>
+<p>第一行，<code>#include &lt;iostream&gt;</code> 的意思是，导入 <code>iostream</code> 这个库。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>看到第二行的 <code>main</code> 了吗？然后，程序从 <code>main</code> 这个里面开始执行。</p>
+<p>剩下最重要的一句话是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World!"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<p><code>std::cout</code> 就是输出（<code>cout</code> 就是 C-out）的命令。你可能看过有些 C++ 程序中直接写的是 <code>cout</code>。<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><code>std::endl</code> 是输出换行（<code>endl</code> 就是 end-line）的命令，这就像 Pascal 里面的 <code>write</code> 与 <code>writeln</code>，不过 C++ 里面可没有 <code>coutln</code> 这种东西。</p>
+<p><code>&lt;&lt;</code> 应该很形象的表示了流动，其实就是表示输出怎么「流动」的。这句代码的意思就是，<code>"Hello World!"</code> 会先被推到输出流里面，后面的 <code>std::endl</code> 后被推到输出流里面。</p>
+<p>在这里需要注意，在这里 <code>"Hello World!"</code> 是字符串，Pascal 中字符串都是单引号 <code>'</code> 包围的而双引号是错的，这是一个坑，还需注意的是，在 C++ 中单引号包围的字符是有别的含义的，后面会再提及的。</p>
+<p>好了，到这里 Hello World 应该解释的差不多了。</p>
+<p>可能有同学会问，后面那个 <code>return 0</code> 是什么意思？那个 <code>int main(int argc, char const *argv[])</code> 是啥意思？先别管它，一开始写程序的时候先把它当作模板来写吧。</p>
+<h3 id="简单练习">简单练习</h3>
+<ol type="1">
+<li>试着换个字符串输出。</li>
+<li>试着了解转义字符。</li>
+</ol>
+<h2 id="ab-problem第二个-c-程序">A+B Problem：第二个 C++ 程序</h2>
+<p>经典的 A+B Problem 来一下。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a, b, c;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line"></span><br><span class="line">    c = a + b;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; c &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：本人的习惯空行较多，如果不习惯，可以去掉空行，没有关系。</p>
+<h3 id="简要解释-1">简要解释</h3>
+<p><code>std::cin</code> 是读入（<code>cin</code> 也就是 C-in），<code>&gt;&gt;</code> 也与输出语法的类似。</p>
+<p>这里多出来的语句中最重要的是两个，一个是变量声明语句</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, b, c;</span><br></pre></td></tr></table></figure>
+<p>你可能习惯于 Pascal 里面的声明变量</p>
+<figure class="highlight pas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span></span><br><span class="line">a, b, c: integer;</span><br></pre></td></tr></table></figure>
+<p>C++ 里面的声明是直接以数据类型名开头的，在这里就是 <code>int</code> 开头表示接下来要声明变量。</p>
+<p>后面一个最重要的语句，赋值语句</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c = a + b;</span><br></pre></td></tr></table></figure>
+<p>这是 Pascal 与 C++ 语法较大的不同，要注意这是个坑，Pascal 里面是 <code>:=</code> 而 C++ 里面直接是 <code>=</code>，那么判断是否相等用什么呢？后面会提到。</p>
+<h3 id="简单练习-1">简单练习</h3>
+<ol type="1">
+<li>重写一遍代码，提交到 OJ 上，并且 AC。</li>
+<li>更多的输入输出语法参考<a href="https://oi-wiki.org/lang/basic/#scanf-printf" target="_blank" rel="noopener">这节内容</a>。</li>
+</ol>
+<h2 id="结束语">结束语</h2>
+<p>好了，到现在为止，你已经掌握了一些最基本的东西了，剩下的就是找 Pascal 和 C++ 里面对应的东西和一些不同的东西了。</p>
+<h1 id="重要的不同地方">重要的不同地方</h1>
+<h2 id="变量作用域全局变量与局部变量">变量作用域：全局变量与局部变量</h2>
+<p>C++ 几乎可以在<strong>任何地方</strong>声明变量。</p>
+<p>以下对于 C++ 的变量作用域的介绍摘自 <a href="https://oi-wiki.org/lang/var/#_3" target="_blank" rel="noopener">变量作用域 - OI Wiki</a>：</p>
+<blockquote>
+<p>作用域是变量可以发挥作用的代码块。</p>
+<p>变量分为全局变量和局部变量。 在所有函数外部声明的变量，称为全局变量。 在函数或一个代码块内部声明的变量，称为局部变量。</p>
+<p>全局变量的作用域是整个文件，全局变量一旦声明，在整个程序中都是可用的。</p>
+<p>局部变量的作用域是声明语句所在的代码块，局部变量只能被函数内部或者代码块内部的语句使用。</p>
+<p>由一对大括号括起来的若干语句构成一个代码块。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> g = <span class="number">20</span>;  <span class="comment">// 声明全局变量</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> g = <span class="number">10</span>;         <span class="comment">// 声明局部变量</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, g);  <span class="comment">// 输出 g</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+在一个代码块中，局部变量会覆盖掉同名的全局变量，比如上面的代码输出的 <code>g</code> 就是 <code>10</code> 而不是 <code>20</code>。为了防止出现意料之外的错误，请尽量避免局部变量与全局变量重名的情况。
+</blockquote>
+<p>在 Pascal 里写过程/函数的时候，极易忘记声明局部变量 <code>i</code> 或者 <code>j</code>，而一般主程序里都会有循环，于是大部分情况下 <code>i</code> 与 <code>j</code> 都是全局变量，于是，在这种情况下，在过程/函数中对 <code>i</code> 操作极易出错。关键是，在 Pascal 里面如果忘记声明这种局部变量，编译器编译不报错，程序可以运行。</p>
+<p>所以，最重要的一点是，在声明变量，比如循环里面的 <code>i</code> 时，不要用全局变量，能用局部变量就用局部变量。</p>
+<p>如果这么做了，就不用担心在函数里的取变量名（比如 <code>i</code>）冲突了。在写 Pascal 时，这是个极易犯错的点，而 C++ 如果遵守原则，就可以轻松避免这个问题。</p>
+<div class="note">
+<h3 id="额外注">额外注</h3>
+<p>Pascal 也可以避免这个问题，仿照 C++ 的方法，主程序里面只有调用过程/函数，不声明 <code>i</code> <code>j</code> 这种极易名称冲突的全局变量，如果需要循环，另外写一个过程进行调用。</p>
+</div>
+<h2 id="c-没有过程但有-void没有函数值变量但有-return">C++ 没有过程但有 <code>void</code>，没有函数值变量但有 <code>return</code>。</h2>
+<p>示例对比：</p>
+<figure class="highlight pas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">abs</span><span class="params">(x:integer)</span>:</span>integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> x &lt; <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            abs := -x;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            abs := x;</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">abs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> -x;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果不想有返回值（也就是 Pascal 里的「过程」），那么就用 <code>void</code>，<code>void</code> 就是「空」的意思，什么都不返回。</p>
+<figure class="highlight pas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ans: integer;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">printAns</span><span class="params">(ans:integer)</span>;</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    writeln(ans);</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    ans := <span class="number">10</span>;</span><br><span class="line">    printAns(ans);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printAns</span><span class="params">(<span class="keyword">int</span> ans)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">10</span>;</span><br><span class="line">    printAns(ans);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C++ 把函数和过程统统视作函数，连主程序 <code>main</code> 都不放过，比如写 <code>int main</code>，C++ 视 <code>main</code> 为一个整型的函数，这里返回值是 <code>0</code>。它是一种习惯约定，返回 <code>0</code> 代表程序正常退出。</p>
+<h2 id="在函数中传递参数">在函数中传递参数</h2>
+<p>C++ 中没有 Pascal 的 <code>var</code> 关键字可以改变传递的参数，于是 C++ 必须得这么干</p>
+<figure class="highlight pas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a, b: integer;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">procedure</span> <span class="title">swap</span><span class="params">(<span class="keyword">var</span> x,y:integer)</span>;</span></span><br><span class="line"><span class="keyword">var</span> temp:integer;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    temp := x;</span><br><span class="line">    x := y;</span><br><span class="line">    y := temp;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    a := <span class="number">10</span>; b:= <span class="number">20</span>;    </span><br><span class="line">    swap(a, b);</span><br><span class="line">    writeln(a, <span class="string">' '</span>, b);</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>* x, <span class="keyword">int</span>* y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    temp = *x;</span><br><span class="line">    *x = *y;</span><br><span class="line">    *y = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">10</span>, b = <span class="number">20</span>;</span><br><span class="line">    swap(&amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">" "</span> &lt;&lt; b;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，上面的 C++ 代码涉及指针问题。指针问题还是很麻烦的，建议去阅读相关资料。</p>
+<h2 id="还有什么">……还有什么？</h2>
+<p>暂时没有想到……</p>
+<h1 id="那些对应的语法">那些对应的语法</h1>
+<h2 id="条件">条件</h2>
+<h3 id="if-语句"><code>if</code> 语句</h3>
+<figure class="highlight pas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a = b) <span class="keyword">and</span> (a &gt; <span class="number">0</span>) <span class="keyword">and</span> (b &gt; <span class="number">0</span>) <span class="keyword">then</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        b := a;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        a := b;</span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a == b &amp;&amp; a &gt; <span class="number">0</span> &amp;&amp; b &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    b = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    a = b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以下有几点需要注意：</p>
+<ol type="1">
+<li>Pascal 中的 <code>and</code> 与 C++ 中的 <code>&amp;&amp;</code> 的优先级是不同的，C++ 不需要给判断条件加括号了。</li>
+<li>Pascal 中判断是否相等是 <code>=</code>，赋值是 <code>:=</code>，C++ 中判断是否相等是 <code>==</code>，赋值是 <code>=</code>。</li>
+<li>如果在 <code>if</code> 语句的括号内写了 <code>a = b</code> 而不是 <code>a == b</code>，程序是不会报错的，而且会把 <code>b</code> 赋值给 <code>a</code>，这个语句 <code>a = b</code> 的返回结果是 <code>true</code>。</li>
+<li>C++ 就不需要思考到底要不要在 <code>end</code> 后面加分号了。</li>
+</ol>
+<h3 id="case-与-switch"><code>case</code> 与 <code>switch</code></h3>
+<p>这个用到的不是很多，就不详细写了。</p>
+<p>需要注意的是 C++ 没有 <code>1..n</code> 这种东西，也没有连续不等式（比如 <code>1 &lt; x &lt; 2</code>）这种东西。</p>
+<h2 id="循环">循环</h2>
+<h3 id="for-循环"><code>for</code> 循环</h3>
+<p>C++ 里的 <code>for</code> 语句很不一样。</p>
+<figure class="highlight pas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i: integer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">for</span> i:= <span class="number">1</span> <span class="keyword">to</span> <span class="number">10</span> <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">write</span>(i, <span class="string">' '</span>);</span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++)&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="while-循环"><code>while</code> 循环</h3>
+<p><code>while</code> 还是差不多的。</p>
+<figure class="highlight pas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i: integer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    i := <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> i &lt;= <span class="number">10</span> <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">write</span>(i,<span class="string">' '</span>);</span><br><span class="line">            inc(i); <span class="comment">// 或者 i := i + 1;</span></span><br><span class="line">        <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (i &lt;= <span class="number">10</span>)&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    i++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="repeat-until-与-do-while-循环"><code>repeat until</code> 与 <code>do while</code> 循环</h3>
+<p>注意，<code>repeat unitl</code> 与 <code>do while</code> 是不同的。</p>
+<figure class="highlight pas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i: integer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    i := <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">repeat</span></span><br><span class="line">        <span class="keyword">write</span>(i, <span class="string">' '</span>);</span><br><span class="line">        inc(i);</span><br><span class="line">    <span class="keyword">until</span> i = <span class="number">11</span>;</span><br><span class="line"><span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    i++;</span><br><span class="line">&#125; <span class="keyword">while</span> (i &lt;= <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="变量">变量</h2>
+<h3 id="数据类型">数据类型</h3>
+<p>请参考：</p>
+<ul>
+<li><a href="https://en.cppreference.com/w/cpp/language/types" target="_blank" rel="noopener">Fundamental types - cppreference.com</a></li>
+</ul>
+<h3 id="常量声明">常量声明</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="number">3.1415926</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="运算符">运算符</h2>
+<p>请参考</p>
+<ul>
+<li><a href="https://oi-wiki.org/lang/op/" target="_blank" rel="noopener">运算 - OI Wiki</a></li>
+</ul>
+<p>已经写得足够简洁了。</p>
+<h2 id="数组字符串指针去哪里了">数组、字符串、指针……去哪里了？</h2>
+<p>请看下节内容。</p>
+<h1 id="c-标准库与参考资料">C++ 标准库与参考资料</h1>
+<p>千万不要重复造轮子（除非为了练习），在想自己动手写一个功能出来之前，先去看看有没有这个函数或者数据结构。</p>
+<h2 id="c-标准库">C++ 标准库</h2>
+<p>C++ 标准库里 <code>&lt;algorithm&gt;</code> 有很多有用的函数比如快排、二分查找等，可以直接调用（再也不用手写快排了）。请参考这个页面：<a href="https://oi-wiki.org/lang/csl/algorithm/" target="_blank" rel="noopener">STL 算法 - OI Wiki</a></p>
+<p>里面还有 STL 容器，比如数组、向量（可变大小的数组）、队列、栈等（再也不用手写队列堆栈了），附带有很多标准操作。请参考这个页面：<a href="https://oi-wiki.org/lang/csl/container/" target="_blank" rel="noopener">STL 容器简介 - OI Wiki</a></p>
+<p>如果要找关于字符串操作的函数见</p>
+<ul>
+<li><a href="http://www.cplusplus.com/reference/string/" target="_blank" rel="noopener"><string> - C++ Reference</string></a></li>
+<li><a href="https://en.cppreference.com/w/cpp/string/basic_string" target="_blank" rel="noopener">std::basic_string - cppreference.com</a></li>
+</ul>
+<p>C 语言的指针是很灵活的东西，如果想要搞清楚这个东西，建议找本书或者参考手册仔细阅读。</p>
+<h2 id="c-语言资料">C++ 语言资料</h2>
+<ul>
+<li><a href="https://en.cppreference.com/" target="_blank" rel="noopener">cppreference.com</a></li>
+<li><a href="http://www.cplusplus.com/doc/tutorial/" target="_blank" rel="noopener">C++ Language - C++ Tutorials</a></li>
+<li><a href="https://en.wikipedia.org/wiki/C%2B%2B_Standard_Library" target="_blank" rel="noopener">C++ Standard Library - Wikipedia</a></li>
+<li><a href="https://www.gitbook.com/book/alexastva/the-ultimate-question-of-programming-refactoring-/details" target="_blank" rel="noopener">The Ultimate Question of Programming, Refactoring, and Everything</a></li>
+<li><a href="https://google.github.io/styleguide/cppguide.html" target="_blank" rel="noopener">Google C++ Style Guide</a></li>
+</ul>
+<h1 id="后记">后记</h1>
+<p>写到这里，很多同学会觉得这一点都不急救啊，有很多东西没有提到啊。那也是没办法的事情。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>虽然这是为了急救，但很多东西像怎么把字符串转化为数字，怎么搜索字符串中的字符，这些东西也不适合一篇精悍短小的急救帖，如果把这些都写出来，那就是一本 C++ 入门教材了。</p>
+<p>所以，请充分利用参考手册与搜索引擎。</p>
+<p>然后，需要指出的一点是，上面说 C++ 的语法，其实有很多是从 C 语言来的，这个标题应该这么写比较好——《Pascal 转 C/C++ 急救帖》。</p>
+<p>Pascal 在上个世纪后半叶是门很流行的语言，它早于 C 语言，不过现在 Pascal 已经成为历史了。Pascal 后期的发展也是有的，比如 Free Pascal 这个开源编译器项目，增加面向对象的特性（Delphi 语言）。Pascal 目前的用处除了在信息竞赛外，有一个特点是其他语言没有的——编译支持非常非常多老旧机器，比如 Gameboy 这种上个世纪的任天堂游戏机。</p>
+<p>最后，Pascal 的圈子其实很小，C/C++ 的圈子很大，帮助手册与教程很多很全，一定要掌握好英语。世界上还有很多很多编程语言，而计算机这门学科与技术不光是信息竞赛和编程语言。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>Pascal 其实是有库文件的，只不过，很多同学从来都没有用过……<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>有关这个问题，请见 <a href="https://oi-wiki.org/lang/basic/#cin-cout" target="_blank" rel="noopener">这节</a>底下的注释「什么是 std？」。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><del>实质上是太懒不想写。</del><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>kexplorning
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://kexplorning.github.io/2019/11/09/pascaltocpp/" title="Pascal 转 C++ 急救帖">https://kexplorning.github.io/2019/11/09/pascaltocpp/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Pascal/" rel="tag"># Pascal</a>
+              <a href="/tags/C-C/" rel="tag"># C/C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/29/cnki/" rel="next" title="导出 CNKI 文献">
+                  <i class="fa fa-chevron-left"></i> 导出 CNKI 文献
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c-快速安装与环境配置"><span class="nav-number">1.</span> <span class="nav-text">C++ 快速安装与环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方式一使用-ide"><span class="nav-number">1.1.</span> <span class="nav-text">方式一：使用 IDE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式二使用-代码编辑器-编译器-调试器"><span class="nav-number">1.2.</span> <span class="nav-text">方式二：使用 代码编辑器 + 编译器 + 调试器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c-语法快速提要"><span class="nav-number">2.</span> <span class="nav-text">C++ 语法快速提要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hello-world第一个-c-程序"><span class="nav-number">2.1.</span> <span class="nav-text">Hello World：第一个 C++ 程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简要解释"><span class="nav-number">2.1.1.</span> <span class="nav-text">简要解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单练习"><span class="nav-number">2.1.2.</span> <span class="nav-text">简单练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ab-problem第二个-c-程序"><span class="nav-number">2.2.</span> <span class="nav-text">A+B Problem：第二个 C++ 程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简要解释-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">简要解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单练习-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">简单练习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束语"><span class="nav-number">2.3.</span> <span class="nav-text">结束语</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重要的不同地方"><span class="nav-number">3.</span> <span class="nav-text">重要的不同地方</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量作用域全局变量与局部变量"><span class="nav-number">3.1.</span> <span class="nav-text">变量作用域：全局变量与局部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#额外注"><span class="nav-number">3.1.1.</span> <span class="nav-text">额外注</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-没有过程但有-void没有函数值变量但有-return"><span class="nav-number">3.2.</span> <span class="nav-text">C++ 没有过程但有 void，没有函数值变量但有 return。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在函数中传递参数"><span class="nav-number">3.3.</span> <span class="nav-text">在函数中传递参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还有什么"><span class="nav-number">3.4.</span> <span class="nav-text">……还有什么？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#那些对应的语法"><span class="nav-number">4.</span> <span class="nav-text">那些对应的语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#条件"><span class="nav-number">4.1.</span> <span class="nav-text">条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-语句"><span class="nav-number">4.1.1.</span> <span class="nav-text">if 语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#case-与-switch"><span class="nav-number">4.1.2.</span> <span class="nav-text">case 与 switch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">4.2.</span> <span class="nav-text">循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环"><span class="nav-number">4.2.1.</span> <span class="nav-text">for 循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while-循环"><span class="nav-number">4.2.2.</span> <span class="nav-text">while 循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#repeat-until-与-do-while-循环"><span class="nav-number">4.2.3.</span> <span class="nav-text">repeat until 与 do while 循环</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">4.3.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">4.3.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量声明"><span class="nav-number">4.3.2.</span> <span class="nav-text">常量声明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">4.4.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组字符串指针去哪里了"><span class="nav-number">4.5.</span> <span class="nav-text">数组、字符串、指针……去哪里了？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c-标准库与参考资料"><span class="nav-number">5.</span> <span class="nav-text">C++ 标准库与参考资料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#c-标准库"><span class="nav-number">5.1.</span> <span class="nav-text">C++ 标准库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-语言资料"><span class="nav-number">5.2.</span> <span class="nav-text">C++ 语言资料</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="kexplorning"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">kexplorning</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kexplorning</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

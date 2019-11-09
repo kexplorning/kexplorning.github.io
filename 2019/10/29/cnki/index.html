@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-
-
-
-
-
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Nightkeeper" type="application/atom+xml">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
 <script id="hexo-configurations">
@@ -26,7 +22,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '7.4.0',
+    version: '7.5.0',
     exturl: false,
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
@@ -70,7 +66,8 @@
 <meta name="twitter:title" content="导出 CNKI 文献">
 <meta name="twitter:description" content="CNKI 是一个很棒的网站，查找论文非常迅速，通常每次只要花五六秒，关键词匹配挺精确的，每次找论文只需要往后翻几页就可以了，对论文默认使用自家强大的 CAJ 格式文件下载。 所以呢，为了方便查找与导出文献，希望能做到如下几点：  快速查找 导出文献  生成 PDF 文件 导出文献元数据（BibTeX 格式）到文献管理器中">
 <meta name="twitter:image" content="https://kexplorning.github.io/2019/10/29/cnki/CNKI-export-1.png">
-  <link rel="canonical" href="https://kexplorning.github.io/2019/10/29/cnki/">
+
+<link rel="canonical" href="https://kexplorning.github.io/2019/10/29/cnki/">
 
 
 <script id="page-configurations">
@@ -85,10 +82,7 @@
 </script>
 
   <title>导出 CNKI 文献 | Nightkeeper</title>
-  <meta name="generator" content="Hexo 3.9.0">
   
-
-
 
 
 
@@ -107,7 +101,6 @@
   .use-motion .post-body,
   .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .logo,
   .use-motion .site-title,
   .use-motion .site-subtitle {
     opacity: initial;
@@ -121,11 +114,11 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
 
@@ -137,15 +130,14 @@
       </a>
     </div>
         <p class="site-subtitle">Not Only an Archive</p>
-      
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 
@@ -153,31 +145,17 @@
 <nav class="site-nav">
   
   <ul id="menu" class="menu">
-      
-      
-      
-        
         <li class="menu-item menu-item-home">
-      
-    
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
-      
-    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
   </ul>
-
-    
 
 </nav>
 </div>
@@ -190,33 +168,33 @@
   </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content">
             
 
-  <div id="posts" class="posts-expand">
-      <article itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block post">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://kexplorning.github.io/2019/10/29/cnki/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="kexplorning">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Nightkeeper">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">导出 CNKI 文献
-
-          
+        <h1 class="post-title" itemprop="name headline">
+          导出 CNKI 文献
         </h1>
 
         <div class="post-meta">
@@ -226,16 +204,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              
-                
-              
-
               <time title="创建时间：2019-10-29 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-29T00:00:00+08:00">2019-10-29</time>
             </span>
-          
-            
-
-            
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
@@ -243,21 +213,17 @@
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-10-30 12:11:36" itemprop="dateModified" datetime="2019-10-30T12:11:36+08:00">2019-10-30</time>
               </span>
-            
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/TeX/" itemprop="url" rel="index"><span itemprop="name">TeX</span></a></span>
-
-                
-                
-              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/TeX/" itemprop="url" rel="index">
+                    <span itemprop="name">TeX</span>
+                  </a>
+                </span>
             </span>
-          
 
           
 
@@ -270,7 +236,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <html><head></head><body><p>CNKI 是一个很棒的网站，查找论文非常迅速，通常每次只要花五六秒，关键词匹配挺精确的，每次找论文只需要往后翻几页就可以了，对论文默认使用自家强大的 CAJ 格式文件下载。</p>
+        <p>CNKI 是一个很棒的网站，查找论文非常迅速，通常每次只要花五六秒，关键词匹配挺精确的，每次找论文只需要往后翻几页就可以了，对论文默认使用自家强大的 CAJ 格式文件下载。</p>
 <p>所以呢，为了方便查找与导出文献，希望能做到如下几点：</p>
 <ul>
 <li>快速查找</li>
@@ -320,10 +286,10 @@
 <h3 id="直接下载-pdf-格式文件">直接下载 PDF 格式文件</h3>
 <p>比较靠谱的方法是，下载官方提供的 PDF 文件，那么问题来了，上哪找呢？</p>
 <p>经过一番分析，可以发现：</p>
-<p>比如这篇<a href="https://cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&dbname=CJFD2013&filename=JFYZ201301020&uid=WEEvREdxOWJmbC9oM1NjYkZCbDdrNXcxd21mTk5mMEpUYWRDSmdZSWUwQWI=R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&v=MjQ1OTZWYnpQTHl2U2RMRzRIOUxNcm85SFpJUjhlWDFMdXhZUzdEaDFUM3FUcldNMUZyQ1VSTE9lWitSc0Z5SGw=" target="_blank" rel="noopener">文献</a>的 CAJ 文档下载地址</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://epub.cnki.net/kns/download.aspx?filename=2oVQzt2TBJjStNnSJplUGlmTvhVTFhlZkx0ZygkSppGVHBDUrhlVro0LlVVSvdmU2kVYH1Eb6RGcpRVRXpXbkBTQrtWaqR2K2czKRpEO2ETQwBnWLFmWRdWVxlHe1YkNvU3MVZEZNVDaaVXcnN2Lxtkdi90cx1ET&tablename=CJFD2013</span><br></pre></td></tr></tbody></table></figure>
+<p>比如这篇<a href="https://cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&amp;dbname=CJFD2013&amp;filename=JFYZ201301020&amp;uid=WEEvREdxOWJmbC9oM1NjYkZCbDdrNXcxd21mTk5mMEpUYWRDSmdZSWUwQWI=R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&amp;v=MjQ1OTZWYnpQTHl2U2RMRzRIOUxNcm85SFpJUjhlWDFMdXhZUzdEaDFUM3FUcldNMUZyQ1VSTE9lWitSc0Z5SGw=" target="_blank" rel="noopener">文献</a>的 CAJ 文档下载地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://epub.cnki.net/kns/download.aspx?filename=2oVQzt2TBJjStNnSJplUGlmTvhVTFhlZkx0ZygkSppGVHBDUrhlVro0LlVVSvdmU2kVYH1Eb6RGcpRVRXpXbkBTQrtWaqR2K2czKRpEO2ETQwBnWLFmWRdWVxlHe1YkNvU3MVZEZNVDaaVXcnN2Lxtkdi90cx1ET&amp;tablename=CJFD2013</span><br></pre></td></tr></table></figure>
 <p>下载它的 PDF 文档需要</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://epub.cnki.net/kns/download.aspx?filename=2oVQzt2TBJjStNnSJplUGlmTvhVTFhlZkx0ZygkSppGVHBDUrhlVro0LlVVSvdmU2kVYH1Eb6RGcpRVRXpXbkBTQrtWaqR2K2czKRpEO2ETQwBnWLFmWRdWVxlHe1YkNvU3MVZEZNVDaaVXcnN2Lxtkdi90cx1ET&tablename=CJFD2013&dflag=pdfdown</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://epub.cnki.net/kns/download.aspx?filename=2oVQzt2TBJjStNnSJplUGlmTvhVTFhlZkx0ZygkSppGVHBDUrhlVro0LlVVSvdmU2kVYH1Eb6RGcpRVRXpXbkBTQrtWaqR2K2czKRpEO2ETQwBnWLFmWRdWVxlHe1YkNvU3MVZEZNVDaaVXcnN2Lxtkdi90cx1ET&amp;tablename=CJFD2013&amp;dflag=pdfdown</span><br></pre></td></tr></table></figure>
 <p>对比发现，只需加入一个 <code>dflag=pdfdown</code> 就可以下载 PDF 文档了。</p>
 <p>这里就有个 Tampermonkey 脚本可以搞定这些事情</p>
 <ul>
@@ -338,11 +304,11 @@
 <h3 id="使用-cnki-提供的方法">使用 CNKI 提供的方法</h3>
 <p>来看看 CNKI 提供些什么方法：</p>
 <figure>
-<img src="/2019/10/29/cnki/CNKI-export-1.png" alt><figcaption>CNKI 文献可导出格式</figcaption>
+<img src="CNKI-export-1.png" alt><figcaption>CNKI 文献可导出格式</figcaption>
 </figure>
 <p>再看自定义能自定义什么</p>
 <figure>
-<img src="/2019/10/29/cnki/CNKI-export-2.png" alt><figcaption>CNKI 文献导出格式自定义</figcaption>
+<img src="CNKI-export-2.png" alt><figcaption>CNKI 文献导出格式自定义</figcaption>
 </figure>
 <p>emmmmm，看上去都不是想要的。</p>
 <p>好吧，那么看看可不可以先导出其中某一个，然后再转成 BibTeX，于是这里就有个工具</p>
@@ -366,67 +332,58 @@
 </ul>
 <h1 id="后记终极解决方法">后记：终极解决方法</h1>
 <p>使用 Google Scholar。</p>
-</body></html>
+
     </div>
 
     
     
     
         
-      
-        
 
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>kexplorning</li>
+    <strong>本文作者： </strong>kexplorning
+  </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://kexplorning.github.io/2019/10/29/cnki/" title="导出 CNKI 文献">https://kexplorning.github.io/2019/10/29/cnki/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
 </ul>
 </div>
 
-      
 
       <footer class="post-footer">
-          
-            
-          
           <div class="post-tags">
-            
               <a href="/tags/CNKI/" rel="tag"># CNKI</a>
-            
           </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-              
                 <a href="/2019/09/23/first-post/" rel="next" title="建站札记">
                   <i class="fa fa-chevron-left"></i> 建站札记
                 </a>
-              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
+                <a href="/2019/11/09/pascaltocpp/" rel="prev" title="Pascal 转 C++ 急救帖">
+                  Pascal 转 C++ 急救帖 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
-        
       </footer>
     
-  </div>
-  
-  
-  
   </article>
+  
+  
+  
 
   </div>
 
@@ -437,21 +394,14 @@
         </div>
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
   <aside class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
-      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -465,44 +415,40 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
           <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速查找"><span class="nav-number">1.</span> <span class="nav-text">快速查找</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用命令行界面"><span class="nav-number">1.1.</span> <span class="nav-text">使用命令行界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方法"><span class="nav-number">1.2.</span> <span class="nav-text">其他方法？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导出文献"><span class="nav-number">2.</span> <span class="nav-text">导出文献</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成-pdf-文件"><span class="nav-number">2.1.</span> <span class="nav-text">生成 PDF 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将-caj-格式转换为-pdf-格式"><span class="nav-number">2.1.1.</span> <span class="nav-text">将 CAJ 格式转换为 PDF 格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接下载-pdf-格式文件"><span class="nav-number">2.1.2.</span> <span class="nav-text">直接下载 PDF 格式文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导出文献元数据"><span class="nav-number">2.2.</span> <span class="nav-text">导出文献元数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-cnki-提供的方法"><span class="nav-number">2.2.1.</span> <span class="nav-text">使用 CNKI 提供的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接生成-bibtex"><span class="nav-number">2.2.2.</span> <span class="nav-text">直接生成 BibTeX</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记终极解决方法"><span class="nav-number">4.</span> <span class="nav-text">后记：终极解决方法</span></a></li></ol></div>
-        
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="kexplorning"
+    src="/images/avatar.gif">
   <p class="site-author-name" itemprop="name">kexplorning</p>
   <div class="site-description" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
-    
-      
-      
       <div class="site-state-item site-state-categories">
-        
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span>
-        
       </div>
-    
-      
-      
       <div class="site-state-item site-state-tags">
-        
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span>
-        
       </div>
-    
   </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
 
 
 
@@ -516,17 +462,24 @@
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">kexplorning</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.5.0
+  </div>
 
         
 
@@ -547,40 +500,31 @@
   </div>
 
   
-
-
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
-<script src="/js/schemes/muse.js?v=7.4.0"></script>
-<script src="/js/next-boot.js?v=7.4.0"></script>
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 
